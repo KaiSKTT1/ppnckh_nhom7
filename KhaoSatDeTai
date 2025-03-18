@@ -1,1 +1,73 @@
-Khảo sát đề tài
+			Khảo sát đề tài nhóm7
+Tên đề tài: Khảo sát về bộ dữ liệu ETIS-LaribPolyDB trong nghiên cứu chống giả mạo khuôn mặt
+
+Giới thiệu:
+•	Lĩnh vực và nghiên cứu liên quan đã và đang phát triển như thế nào? 
+•	Các vấn đề và bài toán đặt ra cần giải quyết là gì?
+Giới thiệu tổng quan về đề tài – những vấn đề và lĩnh vực liên quan đến đề tài.
+Trong những năm gần đây, nhận diện khuôn mặt đã trở thành một trong những công nghệ quan trọng, được ứng dụng rộng rãi trong nhiều lĩnh vực như bảo mật, thanh toán điện tử, giám sát an ninh và quản lý danh tính. Tuy nhiên, bên cạnh những lợi ích mà công nghệ này mang lại, một vấn đề đáng lo ngại cũng xuất hiện, đó là tấn công giả mạo khuôn mặt (Face Spoofing). Các đối tượng xấu có thể sử dụng ảnh, video hoặc mặt nạ 3D để đánh lừa hệ thống nhận diện, từ đó gây ra nhiều rủi ro về bảo mật.
+Để khắc phục vấn đề này, các nhà nghiên cứu đã tập trung phát triển các phương pháp chống giả mạo khuôn mặt (Face Anti-Spoofing), trong đó việc sử dụng các bộ dữ liệu chuyên biệt đóng vai trò quan trọng trong việc huấn luyện và đánh giá độ chính xác của mô hình. Một trong những bộ dữ liệu được sử dụng phổ biến trong nghiên cứu chống giả mạo là ETIS-LaribPolyDB. Bộ dữ liệu này bao gồm nhiều mẫu khuôn mặt thật và giả với các kỹ thuật tấn công khác nhau, giúp các thuật toán có thể học hỏi và nhận diện hành vi giả mạo một cách hiệu quả hơn.
+Mặc dù đã có nhiều nghiên cứu sử dụng ETIS-LaribPolyDB để huấn luyện và đánh giá mô hình chống giả mạo, nhưng vẫn còn nhiều vấn đề cần được xem xét. Một số câu hỏi đặt ra bao gồm:
+•	Bộ dữ liệu này có thực sự phản ánh đầy đủ các hình thức tấn công giả mạo ngoài thực tế không?
+•	Các thuật toán chống giả mạo sử dụng bộ dữ liệu này đã đạt hiệu quả tối ưu chưa?
+•	Có những phương pháp nào giúp cải thiện độ chính xác của mô hình khi áp dụng ETIS-LaribPolyDB?
+Tại Việt Nam, công nghệ nhận diện khuôn mặt vẫn đang trong giai đoạn phát triển và dần được áp dụng vào thực tế. Việc nghiên cứu và đánh giá bộ dữ liệu ETIS-LaribPolyDB có thể giúp cải thiện chất lượng của các hệ thống xác thực sinh trắc học. Do đó, một vấn đề quan trọng đặt ra là liệu bộ dữ liệu này có thể được khai thác và ứng dụng một cách hiệu quả hơn trong bối cảnh thực tế tại Việt Nam hay không?
+
+TÌNH HÌNH NGHIÊN CỨU TRONG VÀ NGOÀI NƯỚC
+Câu hỏi gợi ý:
+•	Lĩnh vực và nghiên cứu liên quan đã và đang phát triển như thế nào?
+•	Các vấn đề và bài toán đặt ra cần giải quyết là gì?
+Hướng dẫn:
+Tìm hiểu các nghiên cứu đã công bố gần nhất (5 năm trở lại) về lĩnh vực liên quan trong và ngoài nước. Phân tích các kết quả đóng góp, nhận xét các hạn chế còn tồn tại.
+Nhận diện khuôn mặt là một trong những công nghệ quan trọng trong lĩnh vực thị giác máy tính. Tuy nhiên, hệ thống nhận diện khuôn mặt vẫn còn tồn tại nhiều lỗ hổng bảo mật, trong đó có tấn công giả mạo khuôn mặt (Face Spoofing). Đây là phương pháp mà kẻ gian sử dụng hình ảnh, video hoặc mặt nạ 3D để đánh lừa hệ thống. Vì vậy, nghiên cứu về các phương pháp chống giả mạo khuôn mặt (Face Anti-Spoofing) đang nhận được sự quan tâm lớn từ cộng đồng khoa học.
+Trong những năm gần đây, nhiều nghiên cứu đã được thực hiện nhằm cải thiện khả năng phát hiện giả mạo khuôn mặt. Một trong những yếu tố quan trọng giúp phát triển các phương pháp này chính là bộ dữ liệu huấn luyện. Bộ dữ liệu ETIS-LaribPolyDB là một trong những bộ dữ liệu được sử dụng rộng rãi để đánh giá hiệu suất của các thuật toán chống giả mạo. Bộ dữ liệu này bao gồm nhiều loại tấn công khác nhau như ảnh in, video phát lại và mặt nạ 3D, giúp các mô hình có thể học cách phân biệt giữa khuôn mặt thật và giả mạo.
+Nhiều nghiên cứu đã sử dụng ETIS-LaribPolyDB để thử nghiệm các phương pháp chống giả mạo dựa trên đặc trưng hình ảnh, phương pháp học sâu (Deep Learning) và kết hợp nhiều thuật toán khác nhau. Tuy nhiên, vẫn còn một số hạn chế đáng chú ý:
+•	Độ đa dạng của bộ dữ liệu chưa thực sự phản ánh đầy đủ các trường hợp giả mạo trong thực tế.
+•	Một số nghiên cứu cho thấy rằng các mô hình huấn luyện trên ETIS-LaribPolyDB có thể hoạt động tốt trong môi trường thử nghiệm, nhưng hiệu quả giảm đáng kể khi áp dụng vào thực tế.
+•	Việc đánh giá hiệu suất của các thuật toán chống giả mạo còn phụ thuộc vào cách xây dựng bộ dữ liệu và tiêu chí đánh giá.
+Tại Việt Nam, nghiên cứu về chống giả mạo khuôn mặt vẫn còn khá mới mẻ. Hầu hết các nghiên cứu trong nước chủ yếu tập trung vào nhận diện khuôn mặt hơn là phát hiện giả mạo. Một số trường đại học và nhóm nghiên cứu đã bắt đầu tiếp cận vấn đề này, nhưng chưa có nhiều công trình ứng dụng trực tiếp vào thực tế. Do đó, trong thời gian tới, việc tìm hiểu và áp dụng các bộ dữ liệu như ETIS-LaribPolyDB vào nghiên cứu tại Việt Nam sẽ là một hướng đi tiềm năng để nâng cao khả năng bảo mật của các hệ thống sinh trắc học.
+
+MỤC TIÊU VÀ PHẠM VI NGHIÊN CỨU
+Câu hỏi gợi ý:
+•	Mục tiêu nghiên cứu chính của đề tài là gì?
+•	Phạm vi nghiên cứu là gì?
+Hướng dẫn:
+Đặt bài toán cần giải quyết và trình bày mục tiêu nghiên cứu chính của đề tài. Nêu phạm vi nghiên cứu của đề tài, bao gồm việc giới hạn phạm vi nghiên cứu và triển khai, các giả định ban đầu đối với nghiên cứu.
+Với những vấn đề đã đề cập, mục tiêu của đề tài này là khảo sát và đánh giá bộ dữ liệu ETIS-LaribPolyDB trong nghiên cứu chống giả mạo khuôn mặt. Cụ thể, đề tài tập trung vào các mục tiêu chính sau:
+•	Tổng hợp và phân tích các nghiên cứu đã sử dụng ETIS-LaribPolyDB để hiểu rõ cách bộ dữ liệu này được áp dụng trong lĩnh vực nhận diện khuôn mặt.
+•	Đánh giá mức độ hiệu quả của bộ dữ liệu trong việc hỗ trợ các phương pháp chống giả mạo, bao gồm cả các phương pháp truyền thống và hiện đại như Deep Learning.
+•	Nhận diện các hạn chế và đề xuất hướng cải tiến nhằm tăng tính ứng dụng của ETIS-LaribPolyDB trong thực tế.
+Về phạm vi nghiên cứu, đề tài tập trung vào việc khảo sát và phân tích các nghiên cứu trong vòng 5 năm trở lại đây có liên quan đến ETIS-LaribPolyDB. Các tài liệu được xem xét bao gồm các bài báo khoa học, báo cáo nghiên cứu và ứng dụng thực tế của bộ dữ liệu này. Ngoài ra, nghiên cứu này không thực hiện thử nghiệm mô hình trên bộ dữ liệu mà chỉ tập trung vào việc đánh giá và tổng hợp kết quả từ các nghiên cứu trước đó.
+Đề tài được thực hiện trong bối cảnh nghiên cứu khoa học tại trường Đại học, với mục tiêu giúp sinh viên và nhà nghiên cứu hiểu rõ hơn về cách sử dụng ETIS-LaribPolyDB và tiềm năng ứng dụng của nó trong lĩnh vực chống giả mạo khuôn mặt.
+
+
+
+CÁC GIẢ THUYẾT VÀ CÁCH TIẾP CẬN
+Câu hỏi gợi ý:
+•	Các giả thuyết đặt ra để giải quyết bài toán chính?
+•	Các cách tiếp cận để giải quyết bài toán đặt ra?
+Hướng dẫn:
+Giả thuyết:
+Đặt ra những giả thuyết, hay vấn đề – bài toán con cần phải giải quyết để đạt được mục tiêu nghiên cứu đề tài.
+Các cách tiếp cận (dự kiến) để giải quyết các giả thuyết, bài toán con đã đặt.
+________________________________________
+Giả thuyết
+Để có thể đánh giá chính xác bộ dữ liệu ETIS-LaribPolyDB trong nghiên cứu chống giả mạo khuôn mặt, nghiên cứu này đặt ra một số giả thuyết sau:
+•	Bộ dữ liệu ETIS-LaribPolyDB đã được sử dụng rộng rãi trong các nghiên cứu chống giả mạo khuôn mặt và có ảnh hưởng đáng kể đến sự phát triển của lĩnh vực này.
+•	Hiệu quả của bộ dữ liệu có thể khác nhau tùy thuộc vào phương pháp tiếp cận, thuật toán sử dụng và cách tiền xử lý dữ liệu.
+•	ETIS-LaribPolyDB có thể tồn tại một số hạn chế, chẳng hạn như chưa đủ đa dạng về mẫu dữ liệu hoặc chưa phản ánh đầy đủ các kỹ thuật giả mạo thực tế.
+•	Việc cải thiện hoặc kết hợp ETIS-LaribPolyDB với các bộ dữ liệu khác có thể giúp nâng cao độ chính xác của các mô hình chống giả mạo.
+Bài toán nghiên cứu
+Từ mục tiêu nghiên cứu, đề tài đặt ra hai bài toán chính:
+1.	Bài toán thứ nhất: Khảo sát và phân tích cách bộ dữ liệu ETIS-LaribPolyDB được sử dụng trong các nghiên cứu chống giả mạo khuôn mặt.
+2.	Bài toán thứ hai: Đánh giá hiệu quả của bộ dữ liệu này trong việc huấn luyện và kiểm tra các mô hình chống giả mạo, từ đó xác định những hạn chế và đề xuất cải tiến.
+Để giải quyết bài toán thứ nhất, đề tài sẽ tiếp cận bằng cách tổng hợp và phân loại các nghiên cứu liên quan, tập trung vào những phương pháp xử lý dữ liệu và thuật toán đã được áp dụng trên ETIS-LaribPolyDB. Các yếu tố như đặc trưng hình ảnh, kỹ thuật học sâu (Deep Learning) và phương pháp truyền thống cũng sẽ được phân tích để đánh giá mức độ phù hợp của bộ dữ liệu.
+Đối với bài toán thứ hai, đề tài sẽ so sánh ETIS-LaribPolyDB với các bộ dữ liệu chống giả mạo khác, từ đó nhận diện những ưu điểm và hạn chế. Ngoài ra, việc phân tích hiệu suất của các mô hình được huấn luyện trên bộ dữ liệu này sẽ giúp đưa ra những đề xuất nhằm cải thiện chất lượng dữ liệu, ví dụ như mở rộng tập dữ liệu hoặc điều chỉnh cách thu thập dữ liệu để tăng tính đa dạng và thực tiễn.
+Cách tiếp cận
+Từ các giả thuyết trên, đề tài này sẽ tiếp cận theo các hướng sau:
+1.	Tổng hợp tài liệu: Khảo sát các nghiên cứu trong 5 năm trở lại đây có sử dụng ETIS-LaribPolyDB, phân tích cách các nghiên cứu này sử dụng bộ dữ liệu và đánh giá hiệu quả của nó.
+2.	Phân loại phương pháp tiếp cận: Tổng hợp các phương pháp chống giả mạo khuôn mặt đã được áp dụng trên bộ dữ liệu này, bao gồm kỹ thuật truyền thống (dựa trên đặc trưng hình ảnh) và kỹ thuật hiện đại (Deep Learning).
+3.	So sánh và đánh giá: Xem xét các ưu điểm, nhược điểm của ETIS-LaribPolyDB khi so sánh với các bộ dữ liệu khác trong cùng lĩnh vực.
+4.	Nhận diện hạn chế: Phân tích những vấn đề tồn đọng của bộ dữ liệu, chẳng hạn như sự thiếu đa dạng về góc chụp, điều kiện ánh sáng hoặc hình thức giả mạo.
+5.	Đề xuất cải tiến: Đưa ra những đề xuất để nâng cao chất lượng và khả năng ứng dụng của ETIS-LaribPolyDB trong các nghiên cứu tương lai.
+
