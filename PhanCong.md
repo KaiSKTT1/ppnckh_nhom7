@@ -9,5 +9,5 @@ Tuần 4:
    * Tổ chức công việc nhóm:
 + Đạt lên ý tưởng đề tài
 + Phúc và Đạt tìm kiếm nội dung
-+ Thôn phụ trách powerpoint
++ Thông phụ trách powerpoint
 
