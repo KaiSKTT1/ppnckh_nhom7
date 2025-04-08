@@ -1,109 +1,182 @@
-C1: TỔNG QUAN ĐỀ CƯƠNG
-1.1 Giới thiệu về chủ đề nghiên cứu
-Phân đoạn hình ảnh y khoa là một lĩnh vực quan trọng trong chẩn đoán y tế, đặc biệt là phân đoạn polyp từ hình ảnh nội soi đại tràng. Polyp là những tổn thương có thể phát triển thành ung thư, và việc phát hiện chính xác chúng từ hình ảnh nội soi đóng vai trò quan trọng trong việc chẩn đoán sớm, cải thiện kết quả điều trị cho bệnh nhân, giảm thời gian và chi phí nội soi, cũng như hỗ trợ giáo dục y khoa và nghiên cứu phát triển thuốc. Tuy nhiên, polyp có sự đa dạng lớn về hình dạng, kích thước và màu sắc, đồng thời thường có sự tương đồng với mô xung quanh, khiến việc phân đoạn trở thành một thách thức lớn.
-Nghiên cứu này đề xuất một phiên bản cải tiến của U-Net, một kiến trúc mạng nơ-ron tích chập phổ biến trong phân đoạn hình ảnh y khoa, bằng cách tích hợp Mô-đun Chú ý Khối Tích chập (Convolutional Block Attention Module - CBAM). CBAM giúp tăng cường khả năng trích xuất đặc trưng, tập trung vào các khu vực quan trọng của hình ảnh và giảm thiểu nhiễu không cần thiết, từ đó cải thiện độ chính xác phân đoạn, đặc biệt với các polyp nhỏ hoặc có hình dạng phức tạp.
-1.2 Mục tiêu nghiên cứu
-Mục tiêu chung: Phát triển một mô hình U-Net cải tiến, tích hợp CBAM, để nâng cao hiệu suất phân đoạn polyp trong hình ảnh nội soi đại tràng.
-Mục tiêu cụ thể: 
-1.Tăng cường khả năng trích xuất đặc trưng cục bộ và tập trung vào các vùng quan trọng thông qua CBAM.
-2.Đánh giá hiệu quả của mô hình đề xuất trên các tập dữ liệu chuẩn như Kvasir-SEG và CVC-ClinicDB.
-3.So sánh hiệu suất của mô hình với U-Net tiêu chuẩn và các phương pháp hiện đại khác.
-1.3 Câu hỏi nghiên cứu
-Việc tích hợp CBAM vào U-Net ảnh hưởng như thế nào đến độ chính xác và hiệu quả của phân đoạn polyp?
-Mô hình đề xuất có thể xử lý tốt hơn các polyp đa dạng về kích thước, hình dạng và màu sắc so với các phương pháp khác không?
-CBAM cải thiện khả năng tập trung vào các đặc trưng quan trọng trong hình ảnh nội soi đại tràng như thế nào?
-1.4 Giả thuyết nghiên cứu
-Giả thuyết 1: U-Net tích hợp CBAM sẽ đạt độ chính xác phân đoạn cao hơn so với U-Net tiêu chuẩn.
-Giả thuyết 2: Mô hình đề xuất sẽ vượt trội hơn các phương pháp hiện đại khác về các chỉ số như Dice Score và mIOU trên các tập dữ liệu thử nghiệm.
-1.5 Phạm vi nghiên cứu
-Phạm vi nội dung: Nghiên cứu tập trung vào phân đoạn polyp trong hình ảnh nội soi đại tràng 2D, sử dụng kiến trúc U-Net cải tiến với CBAM.
-Phạm vi dữ liệu: Sử dụng hai tập dữ liệu công khai: Kvasir-SEG (1000 hình ảnh) và CVC-ClinicDB (612 hình ảnh).
-Phạm vi ứng dụng: Hỗ trợ chẩn đoán y khoa, đặc biệt trong nội soi đại tràng, với tiềm năng mở rộng sang các nhiệm vụ phân đoạn hình ảnh y khoa khác.
-1.6 Ý nghĩa của nghiên cứu
-Về khoa học: Góp phần làm rõ vai trò của cơ chế chú ý (attention mechanism) trong việc nâng cao hiệu suất phân đoạn hình ảnh y khoa.
-Về thực tiễn: Cung cấp một giải pháp hiệu quả, tiết kiệm tài nguyên tính toán, có thể tích hợp vào các hệ thống hỗ trợ chẩn đoán để cải thiện độ chính xác và hiệu quả lâm sàng.
+# 📘 Đề Cương Nghiên Cứu: Phân Đoạn Polyp Trong Ảnh Nội Soi Đại Tràng Sử Dụng U-Net Kết Hợp CBAM
 
-C2: CƠ SỞ LÝ THUYẾT
-2.1 Khái niệm cơ bản
-Phân đoạn hình ảnh (Image Segmentation) là quá trình chia một hình ảnh thành các vùng có ý nghĩa, trong đó mỗi vùng tương ứng với một đối tượng hoặc khu vực cụ thể. Trong y khoa, phân đoạn hình ảnh giúp xác định các cấu trúc như polyp, khối u, hoặc mô bệnh lý từ hình ảnh chụp chiếu.
-U-Net là một kiến trúc mạng nơ-ron tích chập (CNN) được thiết kế cho phân đoạn hình ảnh y khoa, với cấu trúc encoder-decoder và các kết nối skip connections. Encoder thu thập thông tin ngữ cảnh, trong khi decoder khôi phục chi tiết không gian, giúp U-Net hiệu quả trong việc phân đoạn các hình ảnh phức tạp.
-2.2 Mô-đun Chú ý Khối Tích chập (CBAM)
-CBAM là một mô-đun chú ý được tích hợp vào CNN để cải thiện khả năng trích xuất đặc trưng. Nó bao gồm hai thành phần chính:
-Chú ý kênh (Channel Attention): Sử dụng thông tin toàn cục (global pooling) để xác định các kênh đặc trưng quan trọng, giúp mạng tập trung vào "cái gì" (what) đáng chú ý trong hình ảnh.
-Chú ý không gian (Spatial Attention): Xác định các vùng không gian quan trọng, giúp mạng tập trung vào "ở đâu" (where) trong hình ảnh.
-CBAM kết hợp cả hai cơ chế này để tinh chỉnh đặc trưng qua các chiều kênh và không gian, nâng cao hiệu suất phân đoạn.
-2.3 Các thách thức trong phân đoạn polyp
-Sự đa dạng của polyp: Polyp có thể khác nhau về hình dạng (phẳng, lồi), kích thước (nhỏ, lớn), và màu sắc (tương đồng với mô xung quanh).
-Nhiễu và độ tương đồng: Sự giống nhau giữa polyp và mô xung quanh làm tăng độ khó trong việc phân biệt ranh giới.
-Những thách thức này đòi hỏi một phương pháp có khả năng trích xuất đặc trưng tinh vi và tập trung vào các chi tiết quan trọng.
-2.4 Các công trình nghiên cứu liên quan
-U-Net (2015): Kiến trúc cơ bản cho phân đoạn hình ảnh y khoa, nổi bật với skip connections.
-CBAM (2018): Mô-đun chú ý cải thiện hiệu suất CNN bằng cách tập trung vào đặc trưng quan trọng.
-Residual Blocks: Giảm vấn đề gradient biến mất, tăng tốc độ học nhờ shortcut connections.
-Self-Attention: Hỗ trợ hiểu ngữ cảnh toàn cục, nhưng tốn tài nguyên tính toán và có thể bỏ qua chi tiết cục bộ (như trong Transformer).
-Nghiên cứu này tận dụng U-Net làm nền tảng, kết hợp CBAM để cải thiện khả năng tập trung vào đặc trưng cục bộ, đồng thời duy trì hiệu quả tính toán.
+---
 
-C3: MATERIALS AND METHODS
-3.1 Vật liệu (Materials)
-Tập dữ liệu: 
-oKvasir-SEG: 1000 hình ảnh nội soi, độ phân giải từ 332x487 đến 1920x1072, kèm mặt nạ phân đoạn.
-oCVC-ClinicDB: 612 hình ảnh nội soi, độ phân giải 384x288, kèm mặt nạ phân đoạn.
-Thiết bị: GPU NVIDIA Tesla P100.
-Phần mềm: Python, TensorFlow, thư viện Albumentations cho tăng cường dữ liệu.
-3.2 Phương pháp (Methods)
-Thiết kế nghiên cứu
-Nghiên cứu thực nghiệm, bao gồm phát triển mô hình U-Net Focus với CBAM, huấn luyện trên các tập dữ liệu chuẩn, và đánh giá hiệu suất.
-Quy trình thực hiện
-1.Chuẩn bị dữ liệu: 
-oChia dữ liệu: 80% huấn luyện, 10% validation, 10% kiểm tra.
-oTăng cường dữ liệu: Sử dụng Albumentations với các phép biến đổi như lật ngang, lật dọc, điều chỉnh màu sắc (Color Jitter).
-2.Mô hình đề xuất (U-Net Focus + CBAM): 
-oEncoder: Tích hợp CBAM sau mỗi khối tích chập và trước bước downsampling để tinh chỉnh đặc trưng.
-oBottleneck: Sử dụng Residual Blocks để duy trì dòng gradient.
-oDecoder: Áp dụng CBAM sau mỗi bước upsampling và skip connection để tập trung vào đặc trưng quan trọng.
-oĐầu ra: Lớp tích chập 1x1 tạo mặt nạ phân đoạn nhị phân.
-3.Huấn luyện: 
-oKích thước ảnh: 352x352x3.
-oLearning rate: 1e-4.
-oOptimizer: AdamW.
-oLoss function: Dice Loss.
-oSố epoch: 500.
-oBatch size: 4.
-4.Đánh giá: 
-oChỉ số: Dice Similarity Coefficient (DSC) và Mean Intersection over Union (mIOU).
-Phương pháp đề xuất chi tiết
-CBAM được đặt trước mỗi bước downsampling trong encoder để đảm bảo thông tin quan trọng không bị mất.
-Trong decoder, CBAM được áp dụng sau skip connections để tăng cường chi tiết không gian.
-Sử dụng multi-level distance masks để mở rộng ngữ cảnh xung quanh polyp, cải thiện độ chính xác ranh giới.
+## 📌 Chương 1: TỔNG QUAN ĐỀ CƯƠNG
 
-C4: THỰC NGHIỆM & KẾT QUẢ ĐẠT ĐƯỢC
-4.1 Mô tả thực nghiệm
-Thiết lập: Huấn luyện trên GPU NVIDIA Tesla P100, batch size 4, chia tập dữ liệu thành huấn luyện (80%), validation (10%), và kiểm tra (10%).
-Kịch bản thử nghiệm: Đánh giá trên tập kiểm tra của Kvasir-SEG và CVC-ClinicDB.
-4.2 Kết quả
-Ablation Studies
-Bảng dưới đây thể hiện kết quả khi tích hợp CBAM vào các phần khác nhau của U-Net Focus:
-Mô hình	CVC-ClinicDB		Kvasir-SEG	
-	DSC	mIOU	DSC	mIOU
-U-Net Focus + CBAM Encoder	0.911	0.836	0.862	0.762
-U-Net Focus + CBAM Decoder	0.919	0.852	0.883	0.801
-U-Net Focus + CBAM Encoder/Decoder	0.935	0.877	0.891	0.803
-Kết quả tốt nhất đạt được khi sử dụng CBAM ở cả encoder và decoder, cải thiện DSC 2% trên CVC-ClinicDB và 1% trên Kvasir-SEG so với các cấu hình khác.
-So sánh với các phương pháp hiện đại
-Bảng so sánh với các mô hình state-of-the-art:
-Mô hình	Năm	CVC-ClinicDB		Kvasir-SEG	
-		DSC	mIOU	DSC	mIOU
-U-Net	2015	0.710	0.627	0.818	0.746
-ResUnet++	2019	0.763	0.701	0.813	0.793
-HRNetV2	2019	0.778	0.636	0.853	0.744
-DCRNet	2022	0.856	0.788	0.886	0.825
-MSRF-Net	2022	0.906	0.828	0.851	0.740
-U-Net Focus + CBAM	2024	0.935	0.877	0.891	0.803
-Mô hình đề xuất đạt DSC cao nhất: 0.935 trên CVC-ClinicDB và 0.891 trên Kvasir-SEG, vượt trội hơn các phương pháp khác.
-4.3 Phân tích và thảo luận
-Hiệu quả của CBAM: Grad-CAM visualizations cho thấy mô hình tập trung chính xác hơn vào ranh giới polyp, đặc biệt với các polyp nhỏ hoặc chồng lấp.
-Ưu điểm: Cải thiện độ nhạy và chính xác trong phân đoạn, phù hợp với ứng dụng lâm sàng thực tế.
-Hiệu quả tính toán: So với các mô hình Transformer, U-Net Focus + CBAM duy trì hiệu suất cao mà không đòi hỏi tài nguyên tính toán lớn.
-4.4 Kết luận và hướng phát triển
-Kết luận: Nghiên cứu đã chứng minh rằng tích hợp CBAM vào U-Net Focus cải thiện đáng kể hiệu suất phân đoạn polyp, vượt qua U-Net tiêu chuẩn và các mô hình hiện đại khác về độ chính xác và hiệu quả.
-Hướng tương lai: Áp dụng phương pháp này cho các nhiệm vụ phân đoạn hình ảnh y khoa khác (như phân đoạn khối u), hoặc khám phá các cơ chế chú ý tiên tiến hơn để tối ưu hóa hiệu suất.
+### 1.1 Giới thiệu về chủ đề nghiên cứu
+Phân đoạn hình ảnh y khoa là một lĩnh vực quan trọng trong chẩn đoán y tế, đặc biệt là phân đoạn polyp từ hình ảnh nội soi đại tràng. Polyp là những tổn thương có thể phát triển thành ung thư, và việc phát hiện chính xác chúng từ hình ảnh nội soi đóng vai trò quan trọng trong:
+- Chẩn đoán sớm
+- Cải thiện kết quả điều trị
+- Giảm thời gian và chi phí nội soi
+- Hỗ trợ giáo dục y khoa và nghiên cứu
+
+Tuy nhiên, polyp rất đa dạng về **hình dạng, kích thước và màu sắc**, và thường tương đồng với mô xung quanh, gây khó khăn trong phân đoạn.
+
+Nghiên cứu này đề xuất một phiên bản cải tiến của **U-Net**, tích hợp **Convolutional Block Attention Module (CBAM)** để:
+- Tăng khả năng trích xuất đặc trưng
+- Tập trung vào vùng quan trọng
+- Loại bỏ nhiễu không cần thiết
+- Cải thiện phân đoạn polyp nhỏ hoặc phức tạp
+
+---
+
+### 1.2 Mục tiêu nghiên cứu
+**Mục tiêu chung:**  
+Phát triển mô hình U-Net cải tiến tích hợp CBAM để nâng cao hiệu suất phân đoạn polyp.
+
+**Mục tiêu cụ thể:**
+1. Tăng cường trích xuất đặc trưng cục bộ qua CBAM  
+2. Đánh giá mô hình trên tập dữ liệu Kvasir-SEG và CVC-ClinicDB  
+3. So sánh hiệu suất với U-Net tiêu chuẩn và các phương pháp hiện đại khác
+
+---
+
+### 1.3 Câu hỏi nghiên cứu
+- Tích hợp CBAM vào U-Net ảnh hưởng thế nào đến độ chính xác phân đoạn?
+- Mô hình có xử lý tốt các polyp đa dạng không?
+- CBAM giúp tập trung vào đặc trưng quan trọng ra sao?
+
+---
+
+### 1.4 Giả thuyết nghiên cứu
+- **H1**: U-Net + CBAM đạt độ chính xác cao hơn U-Net chuẩn  
+- **H2**: Mô hình vượt trội về Dice Score và mIOU trên các dataset chuẩn
+
+---
+
+### 1.5 Phạm vi nghiên cứu
+- **Nội dung:** Phân đoạn polyp 2D từ ảnh nội soi  
+- **Dữ liệu:** Kvasir-SEG (1000 ảnh), CVC-ClinicDB (612 ảnh)  
+- **Ứng dụng:** Hỗ trợ chẩn đoán và tiềm năng mở rộng cho các nhiệm vụ y tế khác
+
+---
+
+### 1.6 Ý nghĩa của nghiên cứu
+- **Khoa học:** Làm rõ vai trò của attention mechanism trong phân đoạn ảnh y khoa  
+- **Thực tiễn:** Giải pháp tiết kiệm tài nguyên, phù hợp hệ thống hỗ trợ chẩn đoán
+
+---
+
+## 🧠 Chương 2: CƠ SỞ LÝ THUYẾT
+
+### 2.1 Khái niệm cơ bản
+- **Phân đoạn hình ảnh:** Tách ảnh thành vùng có ý nghĩa (đối tượng cụ thể)  
+- **U-Net:** Mạng CNN encoder-decoder, có skip connections giúp phục hồi chi tiết không gian
+
+---
+
+### 2.2 Mô-đun CBAM (Convolutional Block Attention Module)
+- **Channel Attention:** Tập trung vào "cái gì" quan trọng  
+- **Spatial Attention:** Tập trung vào "ở đâu" quan trọng  
+- CBAM = Channel + Spatial, giúp làm nổi bật đặc trưng quan trọng cả về không gian và chiều kênh
+
+---
+
+### 2.3 Thách thức trong phân đoạn polyp
+- Polyp đa dạng về hình dạng, kích thước, màu sắc  
+- Rất giống mô xung quanh → khó phân ranh giới  
+→ Cần mô hình có khả năng trích xuất và tập trung vào chi tiết chính xác
+
+---
+
+### 2.4 Các nghiên cứu liên quan
+- **U-Net (2015):** Kiến trúc nền tảng phân đoạn  
+- **CBAM (2018):** Mô-đun attention nhẹ, hiệu quả  
+- **Residual Blocks:** Khắc phục vanishing gradient  
+- **Self-Attention:** Hiểu toàn cục tốt nhưng nặng tính toán
+
+---
+
+## 🧪 Chương 3: VẬT LIỆU VÀ PHƯƠNG PHÁP
+
+### 3.1 Vật liệu
+
+- **Tập dữ liệu:**
+  - Kvasir-SEG: 1000 ảnh, độ phân giải 332×487 → 1920×1072
+  - CVC-ClinicDB: 612 ảnh, độ phân giải 384×288
+
+- **Thiết bị:** GPU NVIDIA Tesla P100  
+- **Phần mềm:** Python, TensorFlow, Albumentations (tăng cường dữ liệu)
+
+---
+
+### 3.2 Phương pháp
+
+#### Thiết kế nghiên cứu
+Thực nghiệm với mô hình **U-Net Focus + CBAM**, đánh giá hiệu suất trên 2 dataset
+
+#### Quy trình:
+1. **Chuẩn bị dữ liệu:**
+   - Chia: 80% train / 10% val / 10% test
+   - Augmentation: Lật, xoay, thay đổi màu (Color Jitter)
+
+2. **Mô hình đề xuất:**
+   - **Encoder:** CBAM sau mỗi block trước downsampling  
+   - **Bottleneck:** Residual Blocks  
+   - **Decoder:** CBAM sau upsampling + skip connection  
+   - **Output:** Conv 1×1 → mặt nạ nhị phân  
+
+3. **Huấn luyện:**
+   - Input size: 352×352×3  
+   - Learning rate: 1e-4  
+   - Optimizer: AdamW  
+   - Loss: Dice Loss  
+   - Epochs: 500  
+   - Batch size: 4  
+
+4. **Đánh giá:**
+   - **Chỉ số:** Dice Score (DSC), Mean IOU (mIOU)
+
+---
+
+## 📊 Chương 4: THỰC NGHIỆM & KẾT QUẢ
+
+### 4.1 Thiết lập thực nghiệm
+- GPU: NVIDIA Tesla P100  
+- Dataset chia: 80% train, 10% val, 10% test  
+- Đánh giá trên test set của Kvasir-SEG và CVC-ClinicDB
+
+---
+
+### 4.2 Kết quả Ablation Study
+
+| Mô hình                        | CVC-ClinicDB (DSC / mIOU) | Kvasir-SEG (DSC / mIOU) |
+|-------------------------------|----------------------------|--------------------------|
+| U-Net Focus + CBAM Encoder    | 0.911 / 0.836              | 0.862 / 0.762            |
+| U-Net Focus + CBAM Decoder    | 0.919 / 0.852              | 0.883 / 0.801            |
+| U-Net Focus + CBAM Enc/Dec    | **0.935 / 0.877**          | **0.891 / 0.803**        |
+
+➡️ CBAM ở cả encoder và decoder đạt kết quả tốt nhất
+
+---
+
+### 4.3 So sánh với các mô hình hiện đại
+
+| Mô hình              | Năm  | CVC-ClinicDB (DSC / mIOU) | Kvasir-SEG (DSC / mIOU) |
+|----------------------|------|----------------------------|--------------------------|
+| U-Net                | 2015 | 0.710 / 0.627              | 0.818 / 0.746            |
+| ResUnet++            | 2019 | 0.763 / 0.701              | 0.813 / 0.793            |
+| HRNetV2              | 2019 | 0.778 / 0.636              | 0.853 / 0.744            |
+| DCRNet               | 2022 | 0.856 / 0.788              | 0.886 / 0.825            |
+| MSRF-Net             | 2022 | 0.906 / 0.828              | 0.851 / 0.740            |
+| **U-Net + CBAM**     | 2024 | **0.935 / 0.877**          | **0.891 / 0.803**        |
+
+---
+
+### 4.4 Phân tích & Thảo luận
+- **CBAM hiệu quả:** Grad-CAM cho thấy mô hình tập trung rõ hơn vào ranh giới polyp  
+- **Ưu điểm:** Nhạy hơn với polyp nhỏ, tiết kiệm tài nguyên so với Transformer  
+- **Thực tiễn:** Phù hợp với ứng dụng lâm sàng
+
+---
+
+### 4.5 Kết luận & Hướng phát triển
+
+- ✅ **Kết luận:** U-Net + CBAM nâng cao rõ rệt độ chính xác phân đoạn polyp  
+- 🔬 **Tương lai:** Mở rộng sang phân đoạn khối u, thử nghiệm attention nâng cao hơn
+
+---
+
+> 📂 *Mã nguồn, dữ liệu huấn luyện và mô hình sẽ được cập nhật trong repo.*
+
