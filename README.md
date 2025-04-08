@@ -29,25 +29,30 @@ Dataset **ETIS-LaribPolyDB** bao gồm hình ảnh polyp đại tràng thu thậ
 
 ### 📚 Tài liệu tham khảo
 
-#### 📖 Tiếng Anh:
-1. **Using DUCK-Net for polyp image segmentation - PubMed**  
-   - Nghiên cứu mô hình DUCK-Net cho bài toán phân đoạn ảnh polyp, đánh giá trên ETIS-LaribPolyDB.
+### 📖 Tiếng Anh
 
-2. **Medical Image Segmentation on ETIS-LaribPolypDB**  
-   - So sánh hiệu suất của 24 phương pháp phân đoạn y tế hiện đại trên dataset này.
+1. [DUCK-Net for Polyp Image Segmentation](https://pubmed.ncbi.nlm.nih.gov/37328572/)  
+   Nghiên cứu mô hình DUCK-Net cho bài toán phân đoạn ảnh polyp, đánh giá trên ETIS-LaribPolypDB.
 
-3. **Deep Learning for Polyp Detection and Classification in Colonoscopy (AI4PolypNet)**  
-   - Ứng dụng deep learning để phát hiện và phân loại polyp đại tràng.
+2. [Medical Image Segmentation on ETIS-LaribPolypDB](https://paperswithcode.com/sota/medical-image-segmentation-on-etis)  
+   So sánh hiệu suất của 24 phương pháp phân đoạn y tế hiện đại trên dataset này.
 
-#### 📗 Tiếng Việt:
-1. **Tiềm năng của ứng dụng trí tuệ nhân tạo trong hỗ trợ phát hiện polyp đại tràng qua nội soi**  
-   - Giới thiệu hệ thống AI hỗ trợ phát hiện polyp thời gian thực.
+3. [Deep Learning for Polyp Detection and Classification in Colonoscopy (AI4PolypNet)](https://github.com/sing-group/deep-learning-colonoscopy)  
+   Ứng dụng deep learning để phát hiện và phân loại polyp đại tràng.
 
-2. **Trí tuệ nhân tạo AI cho vấn đề chẩn đoán polyp và ung thư đại tràng**  
-   - Ứng dụng AI phân tích hình dạng, kích thước polyp.
+---
 
-3. **Việt Nam sớm ứng dụng trí tuệ nhân tạo trong nội soi phát hiện polyp đại tràng**  
-   - AI giúp phát hiện sớm các tổn thương ở đại tràng.
+### 📗 Tiếng Việt
+
+1. ['Bác sĩ' AI - cuộc cách mạng trong phòng nội soi tiêu hóa](https://vnexpress.net/bac-si-ai-cuoc-cach-mang-trong-phong-noi-soi-tieu-hoa-4866955.html)  
+   Giới thiệu hệ thống AI hỗ trợ phát hiện polyp thời gian thực.
+
+2. [Trí tuệ nhân tạo AI cho vấn đề chẩn đoán polyp và ung thư đại tràng](https://www.vinmec.com/vie/bai-viet/tri-tue-nhan-tao-ai-cho-van-de-chan-doan-polyp-va-ung-thu-dai-trang-vi)  
+   Ứng dụng AI phân tích hình dạng, kích thước polyp.
+
+3. [Nội soi ứng dụng AI có phát hiện sớm ung thư dạ dày?](https://vnexpress.net/noi-soi-ung-dung-ai-co-phat-hien-som-ung-thu-da-day-4825946.html)  
+   AI giúp phát hiện sớm các tổn thương ở dạ dày (có liên quan đến phương pháp nội soi tương tự đại tràng).
+
 
 ---
 
