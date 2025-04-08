@@ -6,5 +6,8 @@ Tuần 4:
    * Kế hoạch dự kiến
    * Liên kết:
       + schedule.xlsx (kế hoạch)
-   * Tổ chức công việc nhóm
-+ Tất cả thành viên đều phải commit tham gia
+   * Tổ chức công việc nhóm:
++ Đạt lên ý tưởng đề tài
++ Phúc và Đạt tìm kiếm nội dung
++ Thôn phụ trách powerpoint
+
