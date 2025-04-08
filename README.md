@@ -30,7 +30,7 @@ Dataset **ETIS-LaribPolyDB** bao gồm hình ảnh polyp đại tràng thu thậ
 ### 📚 Tài liệu tham khảo
 
 #### 📖 Tiếng Anh:
-1. **DUCK-Net for Polyp Image Segmentation**  
+1. **Using DUCK-Net for polyp image segmentation - PubMed**  
    - Nghiên cứu mô hình DUCK-Net cho bài toán phân đoạn ảnh polyp, đánh giá trên ETIS-LaribPolyDB.
 
 2. **Medical Image Segmentation on ETIS-LaribPolypDB**  
