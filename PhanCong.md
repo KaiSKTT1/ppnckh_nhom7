@@ -11,3 +11,10 @@ Tuần 4:
 + Phúc và Đạt tìm kiếm nội dung
 + Thông phụ trách powerpoint
 
+  Tuần 11: Phân công code python
++ Chương 1 - 4: Tổng quan Python + Load dữ liệu : Thông
++ Chương 5 - 6: EDA : Phúc
++ Chương 7 - 8: Tiền xử lý dữ liệu : Phúc
++ Chương 9 -> 14: Mô hình ML : Thông 
++ CHương 15 - 17: tinh chỉnh mô hình : a Đạt
+
