@@ -27,6 +27,19 @@ Dataset **ETIS-LaribPolyDB** bao gồm hình ảnh polyp đại tràng thu thậ
 
 ---
 
+### 📤 Kết quả
+- **So sánh U-Net gốc vs. U-Net + CBAM
+- Trong quá trình nghiên cứu và đánh giá hiệu suất của các mô hình phân đoạn ảnh y tế, nhóm
+ tác giả đã thực hiện một loạt thí nghiệm nhằm kiểm tra tác động của việc tích hợp mô-đun chú ý
+ CBAM (Convolutional Block Attention Module) vào kiến trúc U-Net gốc– một trong những
+ kiến trúc nền tảng phổ biến nhất trong lĩnh vực segmentation.
+-  CBAM được biết đến như một mô-đun attention nhẹ nhưng hiệu quả cao, kết hợp hai cơ chế
+ chú ý chính: chú ý theo kênh (channel attention) và chú ý theo không gian (spatial attention).
+ Mục tiêu của CBAM là giúp mô hình xác định được “nơi cần tập trung” và “đặc trưng nào là
+ quan trọng” trong quá trình huấn luyện và suy luận. Trong khi đó, U-Net gốc hoạt động theo cơ
+ chế encoder–decoder đối xứng nhưng thiếu khả năng tự động làm nổi bật các vùng quan trọng,
+ đặc biệt trong các ảnh có tỷ lệ đối tượng nhỏ (như polyp) hoặc có biên mờ
+
 ### 📚 Tài liệu tham khảo
 
 ### 📖 Tiếng Anh
