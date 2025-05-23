@@ -14,31 +14,38 @@ Dataset **ETIS-LaribPolyDB** bao gồm hình ảnh polyp đại tràng thu thậ
 ---
 
 ### 📥 Input
-- Hình ảnh nội soi đại tràng với kích thước **1225 x 955 pixels**
-- Mỗi ảnh có thể chứa **một hoặc nhiều polyp**
+-  Hình ảnh nội soi đại tràng (colonoscopy images) chứa polyp. Các
+ hình ảnh này có thể đên từ các bộ dữ liệu như Kvasir-SEG hoặc
+ CVC-ClinicDB.
+- Hình ảnh có thể có độ phân giải khác nhau và có thể chứa nhiêu
+ polyp hoặc các câu trúc khác trong đại tràng.
 
 ---
 
 ### 📤 Output
-- **Mặt nạ nhị phân (binary mask)** tương ứng cho mỗi ảnh
+- Các mặt nạ phân đoạn (segmentation masks) cho từng hình
+ ảnh đâu vào, cho biêt vị trí và hình dạng của polyp trong hình ảnh.
 - Mỗi pixel trong mặt nạ:
   - `1` nếu thuộc vùng polyp
   - `0` nếu không thuộc vùng polyp
 
 ---
 
-### 📤 Kết quả
-- **So sánh U-Net gốc vs. U-Net + CBAM
-- Trong quá trình nghiên cứu và đánh giá hiệu suất của các mô hình phân đoạn ảnh y tế, nhóm
- tác giả đã thực hiện một loạt thí nghiệm nhằm kiểm tra tác động của việc tích hợp mô-đun chú ý
- CBAM (Convolutional Block Attention Module) vào kiến trúc U-Net gốc– một trong những
- kiến trúc nền tảng phổ biến nhất trong lĩnh vực segmentation.
--  CBAM được biết đến như một mô-đun attention nhẹ nhưng hiệu quả cao, kết hợp hai cơ chế
- chú ý chính: chú ý theo kênh (channel attention) và chú ý theo không gian (spatial attention).
- Mục tiêu của CBAM là giúp mô hình xác định được “nơi cần tập trung” và “đặc trưng nào là
- quan trọng” trong quá trình huấn luyện và suy luận. Trong khi đó, U-Net gốc hoạt động theo cơ
- chế encoder–decoder đối xứng nhưng thiếu khả năng tự động làm nổi bật các vùng quan trọng,
- đặc biệt trong các ảnh có tỷ lệ đối tượng nhỏ (như polyp) hoặc có biên mờ
+### 📊 Kết quả
+- Đề xuất mô hình Attention-based Multi-scale Nested Network (AMNNet) kết
+ hợp cơ chế chú ý (attention) và kết nối tổ chim (nested skip connections)
+ nhằm nâng cao hiệu quả phân đoạn ảnh y sinh.
+-  Mô hình cho kết quả vượt trội trên nhiều bộ dữ liệu chuẩn như ISIC2018,
+ CVC-ClinicDB, CVC-ColonDB, BUSI và GlaS, cả về chỉ số định lượng (Dice,
+ IoU) lẫn chất lượng trực quan.
+-  Cấu trúc mạng linh hoạt, có khả năng mô hình hóa thông tin không gian 
+ngữ nghĩa ở nhiêu câp độ.
+
+### Hướng phát triển tương lai
+-  Tối ưu hóa mô hình để phù hợp với thiết bị y tế có tài nguyên hạn chế
+ (lightweight version).
+- Ứng dụng mở rộng cho các bài toán phân đoạn khác trong ảnh y sinh như X
+quang, MRI, CT
 
 ### 📚 Tài liệu tham khảo
 
